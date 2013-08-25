@@ -4,7 +4,7 @@ waves.build_t = 10
 waves.build_dt = waves.build_t
 waves.play = false
 waves.data = {}
-waves.level = 10
+waves.level = 0
 
 waves.buildimg = love.graphics.newImage("assets/build.png")
 

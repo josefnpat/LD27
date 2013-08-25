@@ -45,6 +45,9 @@ end
 function select_state:draw()
   love.graphics.print("Press `enter` (keyboard & mouse) or `A` (xbox 360) to join.",32,0)
   for i,v in pairs(players.data) do
+    local xoffset = love.graphics.getWidth()/(#players.data+1)*i
+    local yoffset = love.graphics.getHeight()/2
+    love.graphics.draw(v.classes.port,xoffset,yoffset,0,1,1,v.classes.port:getWidth()/2)
     love.graphics.print("Player "..i..": "..v.controls.name.." - "..v.classes.name,32,32*(i+1))
   end
   if select_state.start ~= select_state.start_dt then

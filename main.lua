@@ -10,6 +10,8 @@ enemies = require("enemies")
 bullet = require("bullet")
 waves = require("waves")
 build = require("build")
+fonts = require("fonts")
+love.graphics.setFont(fonts.small)
 
 gamestate = require("libs/gamestate")
 
@@ -22,7 +24,6 @@ function love.load()
   gamestate.registerEvents()
   gamestate.switch(states.select)
 end
-
 
 function math.round(num, idp)
   local mult = 10^(idp or 0)

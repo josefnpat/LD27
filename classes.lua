@@ -12,6 +12,7 @@ classes.soldier.hp = 100
 classes.soldier.speed = 100
 classes.soldier.shoot_t = 0.25
 classes.soldier.alt_t = 0.1
+classes.soldier.alt_des = "Shield"
 classes.soldier.alt = function(self,dt,player)
   -- SHIELD
 end
@@ -28,6 +29,7 @@ classes.medic.hp = 60
 classes.medic.speed = 80
 classes.medic.shoot_t = 0.25
 classes.medic.alt_t = 1
+classes.medic.alt_des = "Area Heal"
 classes.medic.alt = function(self,dt,player)
   for i,v in pairs(players.data) do
     if math.dist(v.x,v.y,player.x,player.y) < 128 then
