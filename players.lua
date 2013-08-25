@@ -2,7 +2,6 @@ local players = {}
 
 function players.real_init()
   players.data = {}
-  players.money = 0
 end
 
 players.walkquads = {}
@@ -26,6 +25,7 @@ function players.init()
     p.alt_dt = 0
     p.hp = p.classes.hp
   end
+  players.money = #players.data*2000
 end
 
 function players.draw()

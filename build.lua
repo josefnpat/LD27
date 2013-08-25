@@ -3,18 +3,18 @@ local build = {}
 -- BOX
 build[1] = {}
 build[1].tile = 2
-build[1].hp = 200
+build[1].hp = 100
 build[1].slow = 0.1
-build[1].cost = 10
+build[1].cost = 100
 
 -- CAT GUN
 build[2] = {}
 build[2].tile = 3
-build[2].hp = 50
-build[2].cost = 20
-build[2].dmg = 10
-build[2].shoot_t = 1
-build[2].range = 128
+build[2].hp = 25
+build[2].cost = 200
+build[2].dmg = 5
+build[2].shoot_t = 0.1
+build[2].range = 256
 build[2].ss = {}
 build[2].ss.img = classes.soldier.ss.img
 build[2].update = function(self,dt,mx,my,tile)
@@ -49,7 +49,7 @@ end
 build[3] = {}
 build[3].tile = 4
 build[3].hp = 20
-build[3].cost = 30
+build[3].cost = 300
 build[3].money = 1
 build[3].update = function(self,dt,mx,my,tile)
   players.money = players.money + self.money*dt

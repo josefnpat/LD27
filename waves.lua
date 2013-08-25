@@ -58,7 +58,7 @@ function waves.draw()
 end
 
 function waves.new()
-  waves.addenemies(enemies.base,waves.level*2*#players.data)
+  waves.addenemies(enemies.base,waves.level*4*#players.data)
   waves.addenemies(enemies.boss,math.floor(waves.level/2)*#players.data)
 end
 
