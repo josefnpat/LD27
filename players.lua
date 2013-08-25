@@ -57,7 +57,9 @@ function players.draw()
       elseif v.controls:move(v) then
         quad = players.walkquads[math.floor(v.walkdt%4+1)]
       end
-      love.graphics.print("Player "..i,v.x+16,v.y+16)
+      love.graphics.setColor(colors.players[i])
+      love.graphics.print("P"..i,v.x+16,v.y+16)
+      love.graphics.setColor(colors.reset)
       love.graphics.drawq(v.classes.ss.img,quad,v.x,v.y,v.r-math.pi/2,1,1,16,16)
       love.graphics.setColor(colors.players[i])
       love.graphics.drawq(v.classes.ss.img_color,quad,v.x,v.y,v.r-math.pi/2,1,1,16,16)

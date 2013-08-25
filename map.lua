@@ -4,6 +4,8 @@ map.tiles = love.graphics.newImage("assets/tiles.png")
 
 map.size = {x=32,y=32}
 
+map.baseimg = love.graphics.newImage("assets/base.png")
+
 function map.init()
   map.quads = {}
   local i = 0
@@ -38,6 +40,7 @@ function map.draw(x,y)
       love.graphics.print(v.tile,x*32,y*32)
     end
   end
+  love.graphics.draw(map.baseimg,love.graphics.getWidth()/2,love.graphics.getHeight()/2,0,1,1,32,32)
 end
 
 function map.update(dt)

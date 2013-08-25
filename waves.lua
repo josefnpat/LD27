@@ -88,7 +88,7 @@ function waves.update(dt)
     waves.gameover_countdown_dt = waves.gameover_countdown_dt - dt
     if waves.gameover_countdown_dt <= 0 then
       waves.gameover_countdown_dt = waves.gameover_countdown_t
-      gamestate.switch(states.over)
+      gamestate.switch(states.select)
     end
   end
 
@@ -110,7 +110,7 @@ function waves.update(dt)
             v.dist_to_target = nil
           end
         end
-        waves.gameover = true
+        local players_dead = true
         for biy,bxdat in pairs(map.data) do
           for bix,dat in pairs(bxdat) do
             if dat.level > 0 then
@@ -144,9 +144,8 @@ function waves.update(dt)
         for pi,pv in pairs(players.data) do
 
           if not pv.dead then
-            waves.gameover = false
+            players_dead = false
           end
-
           local dist = math.dist(v.x,v.y,pv.x,pv.y)
           if not pv.dead and dist < v.classes.sexyness then
             if dist < player_dist then
@@ -163,6 +162,9 @@ function waves.update(dt)
             end
           end
         end
+        if players_dead then
+          waves.gameover = true
+        end
         for ei,ev in pairs(waves.data) do
           if ev ~= v and math.dist(ev.x,ev.y,v.x,v.y) < 16 then
             target = {x=v.x+(math.random(0,1)*2-1),y=v.y+(math.random(0,1)*2-1)}
@@ -171,6 +173,9 @@ function waves.update(dt)
         end
         if target then
           v.r = -math.atan2(target.x-v.x,target.y-v.y)+math.pi/2
+        end
+        if math.dist(v.x,v.y,love.graphics.getWidth()/2,love.graphics.getHeight()/2) < 32 then
+          waves.gameover = true
         end
       end
     
