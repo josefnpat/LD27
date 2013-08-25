@@ -1,15 +1,19 @@
 local waves = {}
 
-waves.build_t = 10
-waves.build_dt = waves.build_t
-waves.play = false
-waves.data = {}
-waves.level = 0
+function waves.init()
+  waves.build_t = 10
+  waves.build_dt = waves.build_t
+  waves.play = false
+  waves.data = {}
+  waves.level = 0
+  waves.buildwait_dt = waves.buildwait_t
+  waves.gameover_countdown_dt = waves.gameover_countdown_t
+  waves.gameover = false
+end
 
 waves.buildimg = love.graphics.newImage("assets/build.png")
 
 waves.buildwait_t = 1
-waves.buildwait_dt = waves.buildwait_t
 
 waves.enemyquads = {}
 for i = 1,4 do
@@ -17,7 +21,6 @@ for i = 1,4 do
 end
 
 waves.gameover_countdown_t = 10
-waves.gameover_countdown_dt = waves.gameover_countdown_t
 
 function waves.draw()
   local explain

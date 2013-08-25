@@ -1,6 +1,10 @@
 local players = {}
 
-players.data = {}
+function players.real_init()
+  players.data = {}
+  players.money = 0
+end
+
 players.walkquads = {}
 for i = 1,4 do
   players.walkquads[i] = love.graphics.newQuad((i-1)*32,0,32,32,128,128)
@@ -11,8 +15,6 @@ for i = 1,4 do
 end
 
 players.deadimg = love.graphics.newImage("assets/classes/dead.png")
-
-players.money = 0
 
 function players.init()
   for i,p in pairs(players.data) do

@@ -20,7 +20,6 @@ gamestate = require("libs/gamestate")
 states = {}
 states.select = require("state_select")
 states.game = require("state_game")
-states.over = require("state_over")
 
 function love.load()
   gamestate.registerEvents()

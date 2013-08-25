@@ -1,9 +1,10 @@
 local bullet = {}
 
-bullet.data = {}
+function bullet.init()
+  bullet.data = {}
+end
 
 bullet.speed = 500
-
 bullet.quad = love.graphics.newQuad(0,64,32,32,128,129)
 
 function bullet.new(player)

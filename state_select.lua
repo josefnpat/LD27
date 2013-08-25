@@ -1,7 +1,11 @@
 local select_state = {}
 
 select_state.start = 5
-select_state.start_dt = select_state.start
+
+function select_state:enter()
+  select_state.start_dt = select_state.start
+  players.real_init()
+end
 
 function select_state:update(dt)
   if #players.data > 0 then

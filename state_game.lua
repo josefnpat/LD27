@@ -1,8 +1,15 @@
 local game_state = {}
 
-function game_state:init()
+function game_state:enter()
+  bullet.init()
   map.init()
+  waves.init()
   players.init()
+end
+
+function game_state:init()
+--  players.real_init()
+--  game_state:enter()
 end
 
 function game_state:update(dt)
