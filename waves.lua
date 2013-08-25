@@ -8,6 +8,9 @@ waves.level = 0
 
 waves.buildimg = love.graphics.newImage("assets/build.png")
 
+waves.buildwait_t = 1
+waves.buildwait_dt = waves.buildwait_t
+
 waves.enemyquads = {}
 for i = 1,4 do
   waves.enemyquads[i] = love.graphics.newQuad((i-1)*32,0,32,32,128,32)
@@ -17,10 +20,11 @@ waves.gameover_countdown_t = 10
 waves.gameover_countdown_dt = waves.gameover_countdown_t
 
 function waves.draw()
+  local explain
   if waves.play then
-    love.graphics.print("GO GET EM!",0,0)
+    explain = #waves.data .. " ENEMIES REMAIN - DEFEND YOURSELVES!"
   else
-    love.graphics.print("BUILD TIME"..math.round(waves.build_dt,1).." Seconds",0,0)
+    explain = math.round(waves.build_dt,0).." SECONDS REMAIN - BUILD MODE!"
     for i,v in pairs(players.data) do
       local newdist = 48
       v.build = {}
@@ -37,7 +41,16 @@ function waves.draw()
   for i,v in pairs(waves.data) do
     love.graphics.drawq(v.classes.img,waves.enemyquads[math.floor(v.walkdt%4)+1],v.x,v.y,v.r-math.pi/2,1,1,16,16)
   end
-  love.graphics.printf("LEVEL "..waves.level.."\nMONEY: "..math.round(players.money,0),0,0,love.graphics.getWidth(),"center")
+  love.graphics.setColor(0,0,0,127)
+  local w = 400
+  local h = 150
+  love.graphics.rectangle("fill",(love.graphics.getWidth()-w)/2,0,w,h)
+  love.graphics.setColor(colors.reset)
+  love.graphics.setFont(fonts.small)
+  love.graphics.setFont(fonts.large)
+  love.graphics.printf("LEVEL "..waves.level,0,0,love.graphics.getWidth(),"center")
+  love.graphics.setFont(fonts.small)
+  love.graphics.printf(explain.."\nMONEY: "..math.round(players.money,0),0,96,love.graphics.getWidth(),"center")
   
 end
 
@@ -182,12 +195,16 @@ function waves.update(dt)
       waves.play = false
     end
   else
-    waves.build_dt = waves.build_dt - dt
+    waves.buildwait_dt = waves.buildwait_dt - dt
+    if waves.buildwait_dt <= 0 then
+      waves.build_dt = waves.build_dt - dt
+    end
     if waves.build_dt <= 0 then
       waves.play = true
       waves.build_dt = waves.build_t
       waves.level = waves.level + 1
       waves.new()
+      waves.buildwait_dt = waves.buildwait_t
     end
   end
 end

@@ -68,18 +68,19 @@ function players.draw()
 end
 
 function players.build(p)
-  if map.data[p.build.y] and map.data[p.build.y][p.build.x] then
-    local current_level = map.data[p.build.y][p.build.x].level
-    if build[current_level+1] then
-      if players.money >= build[current_level+1].cost then
-        players.money = players.money - build[current_level+1].cost
-        map.data[p.build.y][p.build.x].tile = build[current_level+1].tile
-        map.data[p.build.y][p.build.x].level = map.data[p.build.y][p.build.x].level + 1
-        map.data[p.build.y][p.build.x].hp = build[current_level+1].hp
+  if waves.buildwait_dt <= 0 then
+    if map.data[p.build.y] and map.data[p.build.y][p.build.x] then
+      local current_level = map.data[p.build.y][p.build.x].level
+      if build[current_level+1] then
+        if players.money >= build[current_level+1].cost then
+          players.money = players.money - build[current_level+1].cost
+          map.data[p.build.y][p.build.x].tile = build[current_level+1].tile
+          map.data[p.build.y][p.build.x].level = map.data[p.build.y][p.build.x].level + 1
+          map.data[p.build.y][p.build.x].hp = build[current_level+1].hp
+        end
       end
     end
   end
-  
 end
 
 function players.update(dt)
