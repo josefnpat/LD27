@@ -1,5 +1,7 @@
 dong = require("libs/dong")
 
+gamename = "BEST GAME EVER"
+
 controls = require("controls")
 players = require("players")
 

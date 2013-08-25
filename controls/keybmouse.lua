@@ -1,6 +1,6 @@
 local keybmouse = {}
 
-keybmouse.name = "Keyboard and Mouse"
+keybmouse.name = "Keyboard & Mouse"
 
 keybmouse.direction = function(self,player)
   local x = love.mouse.getX() - player.x

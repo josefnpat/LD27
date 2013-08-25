@@ -1,6 +1,6 @@
 local xbox_base = {}
 
-xbox_base.name = "Xbox Controller"
+xbox_base.name = "Xbox 360 Controller"
 
 xbox_base.direction = function(self,player)
   local x,y = dong.ls(self.js)
