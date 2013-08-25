@@ -4,10 +4,6 @@ dong = require("libs/dong")
 
 require("libs/slam")
 
-music = love.audio.newSource('assets/inudge.mp3', 'stream')
-music:setLooping(true)
-love.audio.play(music)
-
 gamename = string.upper("Defense of Your Craft")
 
 controls = require("controls")
@@ -25,13 +21,18 @@ love.graphics.setFont(fonts.small)
 
 gamestate = require("libs/gamestate")
 
+lovesplash = require("libs/lovesplash")
+msssplash = require("libs/msssplash")
+consplash = require("libs/consplash")
+
 states = {}
+states.splash = require("state_splash")
 states.select = require("state_select")
 states.game = require("state_game")
 
 function love.load()
   gamestate.registerEvents()
-  gamestate.switch(states.select)
+  gamestate.switch(states.splash)
 end
 
 function math.round(num, idp)

@@ -6,6 +6,10 @@ function select_state:init()
   select_state.modes = love.graphics.getModes()
   table.sort(select_state.modes, function(a, b) return a.width*a.height < b.width*b.height end)   -- sort from smallest to largest
   select_state.current_mode = #select_state.modes+1
+  
+  music = love.audio.newSource('assets/inudge.mp3', 'stream')
+  music:setLooping(true)
+  love.audio.play(music)
 end
 
 function select_state:keypressed(key)
