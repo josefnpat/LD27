@@ -83,6 +83,7 @@ function players.build(p)
           map.data[p.build.y][p.build.x].tile = build[current_level+1].tile
           map.data[p.build.y][p.build.x].level = map.data[p.build.y][p.build.x].level + 1
           map.data[p.build.y][p.build.x].hp = build[current_level+1].hp
+          return true
         end
       end
     end
@@ -120,16 +121,21 @@ function players.update(dt)
         if v.controls:shoot(v) and v.shoot_dt <= 0 and v.alt_dt <= 0 then
           bullet.new(v)
           v.shoot_dt = v.classes.shoot_t
+          sfx.play(sfx.data.shoot)
         end
       else
         if v.controls:build(v) then
-          players.build(v)
+          local success = players.build(v)
+          if success then
+            sfx.play(sfx.data.build)
+          end
         end
       end
       v.alt_dt = v.alt_dt - dt
       if v.controls:alt(v) and v.alt_dt <= 0 then
         v.classes:alt(dt,v)
         v.alt_dt = v.classes.alt_t
+        sfx.play(sfx.data.alt)
       end
     end
   end

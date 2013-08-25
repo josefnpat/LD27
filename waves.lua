@@ -3,6 +3,8 @@ local waves = {}
 function waves.init()
   waves.build_t = 10
   waves.build_dt = waves.build_t
+  waves.build_last_init = 3
+  waves.build_last = waves.build_last_init
   waves.play = false
   waves.data = {}
   waves.level = 0
@@ -44,16 +46,12 @@ function waves.draw()
   for i,v in pairs(waves.data) do
     love.graphics.drawq(v.classes.img,waves.enemyquads[math.floor(v.walkdt%4)+1],v.x,v.y,v.r-math.pi/2,1,1,16,16)
   end
-  love.graphics.setColor(0,0,0,127)
-  local w = 400
-  local h = 150
-  love.graphics.rectangle("fill",(love.graphics.getWidth()-w)/2,0,w,h)
   love.graphics.setColor(colors.reset)
   love.graphics.setFont(fonts.small)
   love.graphics.setFont(fonts.large)
   love.graphics.printf("LEVEL "..waves.level,0,0,love.graphics.getWidth(),"center")
   love.graphics.setFont(fonts.small)
-  love.graphics.printf(explain.."\nMONEY: "..math.round(players.money,0),0,96,love.graphics.getWidth(),"center")
+  love.graphics.printf(explain.."\nMONEY: "..math.round(players.money,0),0,48,love.graphics.getWidth(),"center")
   
 end
 
@@ -88,6 +86,15 @@ function waves.addenemies(enemyclass,count)
 end
 
 function waves.update(dt)
+
+  if not waves.play then
+    if waves.build_dt < waves.build_last then
+      waves.build_last = waves.build_last - 1
+      if waves.build_last >= 0 then
+        sfx.play(sfx.data.countdown)
+      end
+    end
+  end
 
   if waves.gameover then
     waves.gameover_countdown_dt = waves.gameover_countdown_dt - dt
@@ -171,6 +178,7 @@ function waves.update(dt)
               if pv.hp < 0 then
                 pv.hp = 0
                 pv.dead = true
+                sfx.play(sfx.data.death)
               end
             end
 
@@ -208,6 +216,7 @@ function waves.update(dt)
     for i,v in pairs(waves.data) do
       if v._remove then
         table.remove(waves.data,i)
+        sfx.play(sfx.data.enemydeath)
       end
     end
     if #waves.data == 0 then
@@ -219,6 +228,7 @@ function waves.update(dt)
       waves.build_dt = waves.build_dt - dt
     end
     if waves.build_dt <= 0 then
+      waves.build_last = waves.build_last_init
       waves.play = true
       waves.build_dt = waves.build_t
       waves.level = waves.level + 1

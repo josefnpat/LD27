@@ -47,6 +47,7 @@ function select_state:update(dt)
       end
 
       if already_joined then
+        sfx.play(sfx.data.select)
         local index
         for checki,checkv in pairs(players.data) do
           if checkv.controls == v then
@@ -58,6 +59,7 @@ function select_state:update(dt)
             classes,
             players.data[index].classes)
       else
+        sfx.play(sfx.data.join)
         local index = #players.data+1
         players.data[index] = {}
         players.data[index].controls = v

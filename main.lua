@@ -2,11 +2,17 @@ math.randomseed( os.time() )
 
 dong = require("libs/dong")
 
-gamename = "Defense of Your Craft"
+require("libs/slam")
+
+music = love.audio.newSource('assets/inudge.mp3', 'stream')
+music:setLooping(true)
+love.audio.play(music)
+
+gamename = string.upper("Defense of Your Craft")
 
 controls = require("controls")
 players = require("players")
-
+sfx = require("sfx")
 colors = require("colors")
 map = require("map")
 classes = require("classes")
