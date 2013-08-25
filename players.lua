@@ -56,6 +56,9 @@ function players.draw()
       local quad = players.walkquads[1]
       if v.controls:alt(v) then
         quad = players.attackquads[math.floor(v.walkdt%2+1+2)]
+        love.graphics.setColor(v.classes.alt_circle_color)
+        love.graphics.circle("line",v.x,v.y,v.classes.alt_circle+math.random(-4,4))
+        love.graphics.setColor(colors.reset)
       elseif v.controls:shoot(v) then
         quad = players.attackquads[math.floor(v.walkdt%2+1)]
       elseif v.controls:move(v) then

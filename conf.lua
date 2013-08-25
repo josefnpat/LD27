@@ -1,5 +1,5 @@
 function love.conf(t)
-    t.title = "Defense of Your Craft - MissingSentinelSoftware.com"        -- The title of the window the game is in (string)
+    t.title = "Defense of Your Craft"        -- The title of the window the game is in (string)
     t.author = "josefnpat"        -- The author of the game (string)
     t.url = nil                 -- The website of the game (string)
     t.identity = nil            -- The name of the save directory (string)
