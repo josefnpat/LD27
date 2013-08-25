@@ -56,7 +56,8 @@ function table.loopshift(table,current)
 end
 
 function table.random(table)
-  local find = math.random(1,#table)
+  local c=0; for _,_ in pairs(table) do c=c+1; end 
+  local find = math.random(1,c)
   local index = 0
   for _,v in pairs(table) do
     index = index + 1
