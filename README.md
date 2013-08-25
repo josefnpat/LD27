@@ -1,11 +1,9 @@
-Defense of Your Craft
-====
+# Defense of Your Craft
 
 Theme: 10 Seconds
 
-Build for 10 seconds and then fight off the attackers with your friends!
-====
-====
+### Build for 10 seconds and then fight off the attackers with your friends!
+
 
 Defend your space station in this free-form tower defense game with up to five players! Use the money you accumulate to build more defenses, but be quick; you only have 10 seconds until the next wave!
 
