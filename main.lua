@@ -1,3 +1,5 @@
+math.randomseed( os.time() )
+
 dong = require("libs/dong")
 
 gamename = "BEST GAME EVER"

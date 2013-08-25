@@ -61,12 +61,12 @@ function select_state:draw()
       xoffset-v.classes.port:getWidth()/2 - 16,
       yoffset - 16,
       v.classes.port:getWidth()+32,
-      v.classes.port:getHeight()+32+16*3)
+      v.classes.port:getHeight()+32+16*6)
     love.graphics.setColor(colors.reset)
     love.graphics.draw(v.classes.port,xoffset,yoffset,0,1,1,v.classes.port:getWidth()/2)
     love.graphics.printf(
-      "Player "..i.."\n"..v.controls.name.."\n"..v.classes.name,
-      xoffset-128,yoffset+v.classes.port:getHeight(),
+      "Player "..i.."\n"..v.controls.name.."\n"..v.classes.name.."\n"..v.classes.alt_des,
+      xoffset-128,yoffset+v.classes.port:getHeight() + 16,
       256,
       "center")
   end
