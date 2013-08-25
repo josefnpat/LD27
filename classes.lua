@@ -14,7 +14,7 @@ classes.soldier.shoot_t = 0.25
 classes.soldier.alt_t = 0.1
 classes.soldier.alt_des = "Shield"
 classes.soldier.alt = function(self,dt,player)
-  -- SHIELD
+  player.shield = 1
 end
 
 classes.medic = {}

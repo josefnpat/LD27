@@ -158,11 +158,20 @@ function waves.update(dt)
           end
           if dist < 16 then
             v.no_new_targets = v.classes.nohomobro
-            pv.hp = pv.hp - dt*v.classes.dmg
-            if pv.hp < 0 then
-              pv.hp = 0
-              pv.dead = true
+
+            if pv.shield then
+              pv.shield = pv.shield - 1
+              if pv.shield <= 0 then
+                pv.shield = nil
+              end
+            else
+              pv.hp = pv.hp - v.classes.dmg
+              if pv.hp < 0 then
+                pv.hp = 0
+                pv.dead = true
+              end
             end
+
           end
         end
         if players_dead then
