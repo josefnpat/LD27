@@ -23,7 +23,9 @@ function select_state:keypressed(key)
     local cm = select_state.modes[select_state.current_mode]
     local success = love.graphics.setMode( cm.width, cm.height )
   elseif key == "f" then
-    love.graphics.toggleFullscreen()
+    if love.graphics.getWidth() ~= 1024 and love.graphics.getHeight() ~=1024 then
+      love.graphics.toggleFullscreen()
+    end
   elseif key == "escape" then
     love.event.quit()
   end
