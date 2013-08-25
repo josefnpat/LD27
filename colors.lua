@@ -2,10 +2,10 @@ local colors = {}
 
 colors.reset = {255,255,255}
 
-colors.hp_border = {0,0,0}
-colors.hp_high = {0,255,0}
-colors.hp_mid = {255,255,0}
-colors.hp_low = {255,0,0}
+colors.hp_border = {0,0,0,127}
+colors.hp_high = {0,255,0,63}
+colors.hp_mid = {255,255,0,127}
+colors.hp_low = {255,0,0,191}
 
 colors.players = {}
 

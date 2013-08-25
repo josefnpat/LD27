@@ -79,7 +79,7 @@ function waves.addenemies(enemyclass,count)
         b.x = -math.random(64,512)
       end
       b.r = 0
-      b.walkdt = math.random()
+      b.walkdt = math.random(1,100)/100
       table.insert(waves.data,b)
     end
   end

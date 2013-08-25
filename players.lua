@@ -37,20 +37,22 @@ function players.draw()
       love.graphics.setColor(colors.reset)
     else
 
-      local hp_color = colors.hp_low
-      if v.hp > v.classes.hp*1/3 then
-        hp_color = colors.hp_high
-      elseif v.hp > v.classes.hp*1/3 then
-        hp_color = colors.hp_mid
-      end
+      local percent = v.hp/v.classes.hp
+      if percent ~= 1 then
+        local hp_color = colors.hp_low
+        if v.hp > v.classes.hp*2/3 then
+          hp_color = colors.hp_high
+        elseif v.hp > v.classes.hp*1/3 then
+          hp_color = colors.hp_mid
+        end
 
-      love.graphics.setColor(hp_color)
-      love.graphics.rectangle("fill",v.x-16,v.y-24,32*v.hp/v.classes.hp,4)
-  
-      love.graphics.setColor(colors.hp_border)
-      love.graphics.rectangle("line",v.x-16,v.y-24,32,4)
+        love.graphics.setColor(hp_color)
+        love.graphics.rectangle("fill",v.x-16,v.y-24,32*percent,4)
+        love.graphics.setColor(colors.hp_border)
+        love.graphics.rectangle("line",v.x-16,v.y-24,32,4)
+        love.graphics.setColor(colors.reset)
+      end
    
-      love.graphics.setColor(colors.reset)
       local quad = players.walkquads[1]
       if v.controls:alt(v) then
         quad = players.attackquads[math.floor(v.walkdt%2+1+2)]
