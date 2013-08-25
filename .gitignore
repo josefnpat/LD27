@@ -1,1 +1,4 @@
-*.swp
+*.swpexternallibs/
+src/externallibs/
+src/git.lua
+._temp.love

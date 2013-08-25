@@ -1,5 +1,8 @@
 math.randomseed( os.time() )
 
+git,git_count = "missing git.lua",0
+pcall( function() return require("git") end );
+
 dong = require("libs/dong")
 
 require("libs/slam")
@@ -42,7 +45,7 @@ function love.update(dt)
   updatefps_dt = updatefps_dt - dt
   if updatefps_dt <= 0 then
     updatefps_dt = updatefps_t
-    love.graphics.setCaption(gamename.." - "..love.timer.getFPS().." fps")
+    love.graphics.setCaption(gamename.." - v" .. git_count .. " [" .. git .. "] "..love.timer.getFPS().." fps")
   end
 end
 
