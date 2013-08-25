@@ -1,21 +1,39 @@
 local enemies = {}
 
-enemies.base = {}
-enemies.base.hp = 50
-enemies.base.img = love.graphics.newImage("assets/enemies/base.png")
-enemies.base.speed = 125
-enemies.base.sexyness = 128
-enemies.base.nohomobro = 0.5
-enemies.base.dmg = 5
-enemies.base.value = 10
+enemies.small_easy = {}
+enemies.small_easy.hp = 50
+enemies.small_easy.img = love.graphics.newImage("assets/enemies/small_easy.png")
+enemies.small_easy.speed = 125
+enemies.small_easy.sexyness = 128
+enemies.small_easy.nohomobro = 0.5
+enemies.small_easy.dmg = 5
+enemies.small_easy.value = 10
 
-enemies.boss = {}
-enemies.boss.hp = 200
-enemies.boss.img = love.graphics.newImage("assets/enemies/boss.png")
-enemies.boss.speed = 100
-enemies.boss.sexyness = 512
-enemies.boss.nohomobro = 0.1
-enemies.boss.dmg = 10
-enemies.boss.value = 50
+enemies.large_easy = {}
+enemies.large_easy.hp = 200
+enemies.large_easy.img = love.graphics.newImage("assets/enemies/large_easy.png")
+enemies.large_easy.speed = 100
+enemies.large_easy.sexyness = 512
+enemies.large_easy.nohomobro = 0.1
+enemies.large_easy.dmg = 10
+enemies.large_easy.value = 50
+
+enemies.small_hard = {}
+enemies.small_hard.hp = 50*10
+enemies.small_hard.img = love.graphics.newImage("assets/enemies/small_hard.png")
+enemies.small_hard.speed = 125/2
+enemies.small_hard.sexyness = 128*10
+enemies.small_hard.nohomobro = 0.5
+enemies.small_hard.dmg = 5*10
+enemies.small_hard.value = 10*10
+
+enemies.large_hard = {}
+enemies.large_hard.hp = 200*10
+enemies.large_hard.img = love.graphics.newImage("assets/enemies/large_hard.png")
+enemies.large_hard.speed = 100/2
+enemies.large_hard.sexyness = 512*10
+enemies.large_hard.nohomobro = 0.1
+enemies.large_hard.dmg = 10*10
+enemies.large_hard.value = 50*10
 
 return enemies
