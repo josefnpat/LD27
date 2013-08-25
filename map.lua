@@ -43,7 +43,9 @@ function map.draw(x,y)
       love.graphics.print(v.tile,x*32,y*32)
     end
   end
-  love.graphics.draw(map.baseimg,love.graphics.getWidth()/2,love.graphics.getHeight()/2,0,1,1,32,32)
+  if not waves.gameover then
+    love.graphics.draw(map.baseimg,love.graphics.getWidth()/2,love.graphics.getHeight()/2,0,1,1,32,32)
+  end
 end
 
 function map.update(dt)

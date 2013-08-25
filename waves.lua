@@ -67,7 +67,7 @@ function waves.addenemies(enemyclass,count)
     for i = 1,count do
       local b = {}
       b.classes = enemyclass
-      b.hp = enemyclass.hp
+      b.hp = enemyclass.hp * (10+waves.level)/10
       if math.random(0,1) == 1 then
         b.y = math.random(64,512)+love.graphics.getHeight()
       else

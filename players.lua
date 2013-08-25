@@ -36,9 +36,16 @@ function players.draw()
       love.graphics.draw(players.deadimg,v.x,v.y,0,1,1,16,16)
       love.graphics.setColor(colors.reset)
     else
-
-      local percent = v.hp/v.classes.hp
-      if percent ~= 1 then
+      local percentalt = 1-v.alt_dt/v.classes.alt_t
+      if percentalt < 1 then
+        love.graphics.rectangle("fill",v.x-16,v.y-24-4,32*percentalt,4)
+        love.graphics.setColor(colors.hp_border)
+        love.graphics.rectangle("line",v.x-16,v.y-24-4,32,4)
+        love.graphics.setColor(colors.reset)
+      end
+      
+      local percenthp = v.hp/v.classes.hp
+      if percenthp ~= 1 then
         local hp_color = colors.hp_low
         if v.hp > v.classes.hp*2/3 then
           hp_color = colors.hp_high
@@ -47,7 +54,7 @@ function players.draw()
         end
 
         love.graphics.setColor(hp_color)
-        love.graphics.rectangle("fill",v.x-16,v.y-24,32*percent,4)
+        love.graphics.rectangle("fill",v.x-16,v.y-24,32*percenthp,4)
         love.graphics.setColor(colors.hp_border)
         love.graphics.rectangle("line",v.x-16,v.y-24,32,4)
         love.graphics.setColor(colors.reset)

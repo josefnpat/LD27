@@ -11,12 +11,12 @@ classes.soldier.dmg = 250
 classes.soldier.hp = 100
 classes.soldier.speed = 100
 classes.soldier.shoot_t = 0.25
-classes.soldier.alt_t = 0.1
+classes.soldier.alt_t = 0.5
 classes.soldier.alt_des = "Shield"
 classes.soldier.alt_circle = 16
 classes.soldier.alt_circle_color = {0,0,255}
 classes.soldier.alt = function(self,dt,player)
-  player.shield = 1
+  player.shield = 5
 end
 
 classes.medic = {}
@@ -63,7 +63,7 @@ classes.ranger.alt_circle_color = {255,0,0}
 classes.ranger.alt = function(self,dt,player)
   for i,v in pairs(waves.data) do
     if math.dist(v.x,v.y,player.x,player.y) < 128 then
-      v.hp = v.hp - 200
+      v.hp = v.hp - 500
       if v.hp < 0 then
         v.hp = 0
         v._remove = true
