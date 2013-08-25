@@ -34,4 +34,10 @@ function game_state:draw()
   end
 end
 
+function game_state:keypressed(key)
+  if key == "escape" then
+    gamestate.switch(states.select)
+  end
+end
+
 return game_state

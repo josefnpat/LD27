@@ -5,7 +5,13 @@ keybmouse.name = "Keyboard & Mouse"
 keybmouse.direction = function(self,player)
   local x = love.mouse.getX() - player.x
   local y = love.mouse.getY() - player.y
-  local dir = -math.atan2(x,y)+math.pi/2
+
+  local dist = math.dist(x,y,0,0)
+
+  local dir = player.r
+  if dist > 8 then
+    dir = -math.atan2(x,y)+math.pi/2
+  end
   return dir
 end
 

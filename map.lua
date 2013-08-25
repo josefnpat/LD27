@@ -2,11 +2,14 @@ local map = {}
 
 map.tiles = love.graphics.newImage("assets/tiles.png")
 
-map.size = {x=32,y=32}
-
 map.baseimg = love.graphics.newImage("assets/base.png")
 
 function map.init()
+  map.size = {
+    x=math.floor(love.graphics.getWidth()/32)+1,
+    y=math.floor(love.graphics.getHeight()/32)+1
+  }
+
   map.quads = {}
   local i = 0
   for y = 1,4 do

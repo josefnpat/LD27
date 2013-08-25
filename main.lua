@@ -2,7 +2,7 @@ math.randomseed( os.time() )
 
 dong = require("libs/dong")
 
-gamename = "BEST GAME EVER"
+gamename = "Defense of Your Craft"
 
 controls = require("controls")
 players = require("players")
