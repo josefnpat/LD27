@@ -37,6 +37,7 @@ function select_state:enter()
 end
 
 function select_state:update(dt)
+  if pause then return end
   if #players.data > 0 then
     select_state.start_dt = select_state.start_dt - dt
   end

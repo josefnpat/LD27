@@ -13,6 +13,7 @@ function game_state:init()
 end
 
 function game_state:update(dt)
+  if pause then return end
   players.update(dt)
   bullet.update(dt)
   waves.update(dt)

@@ -100,3 +100,9 @@ end
 function math.randomd()
   return math.random(0,1)*2-1
 end
+
+function love.keypressed(key)
+  if key == "`" then
+    pause = not pause
+  end
+end
