@@ -35,6 +35,23 @@ function love.load()
   gamestate.switch(states.splash)
 end
 
+updatefps_t = 1
+updatefps_dt = updatefps_t
+
+function love.update(dt)
+  updatefps_dt = updatefps_dt - dt
+  if updatefps_dt <= 0 then
+    updatefps_dt = updatefps_t
+    love.graphics.setCaption(gamename.." - "..love.timer.getFPS().." fps")
+  end
+end
+
+function bg(img)
+  local sx = love.graphics.getWidth()/img:getWidth()
+  local xy = love.graphics.getHeight()/img:getHeight()
+  love.graphics.draw(img,0,0,sy,sx)
+end
+
 function math.round(num, idp)
   local mult = 10^(idp or 0)
   return math.floor(num * mult + 0.5) / mult

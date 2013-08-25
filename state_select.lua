@@ -10,6 +10,7 @@ function select_state:init()
   music = love.audio.newSource('assets/inudge.mp3', 'stream')
   music:setLooping(true)
   love.audio.play(music)
+  select_state.bg = love.graphics.newImage("assets/bg.png")
 end
 
 function select_state:keypressed(key)
@@ -75,6 +76,7 @@ function select_state:update(dt)
 end
 
 function select_state:draw()
+  bg(select_state.bg)
   love.graphics.setFont(fonts.large)
   love.graphics.printf(gamename,0,love.graphics.getHeight()/2-192,love.graphics.getWidth(),"center")
   love.graphics.setFont(fonts.small)
