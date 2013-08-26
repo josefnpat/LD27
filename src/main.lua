@@ -9,7 +9,7 @@ require("libs/slam")
 
 gamename = string.upper("Defense of Your Craft")
 
-controls = require("controls")
+controls = require("controlsarefun")
 players = require("players")
 sfx = require("sfx")
 colors = require("colors")
