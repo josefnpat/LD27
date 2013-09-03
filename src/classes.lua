@@ -72,4 +72,36 @@ classes.ranger.alt = function(self,dt,player)
   end
 end
 
+classes.engie = {}
+classes.engie.name = "Engineer"
+classes.engie.port = love.graphics.newImage("assets/classes/portraits/engie.jpg")
+classes.engie.ss = {}
+classes.engie.ss.img = love.graphics.newImage("assets/classes/ss/engie.png")
+classes.engie.ss.img_color = love.graphics.newImage("assets/classes/ss/engie_color.png")
+classes.engie.range = 64
+classes.engie.dmg = 125
+classes.engie.hp = 200
+classes.engie.speed = 200
+classes.engie.shoot_t = 0.25
+classes.engie.alt_t = 0.5
+classes.engie.alt_des = "Repair"
+classes.engie.alt_circle = 64
+classes.engie.alt_circle_color = {0,255,0}
+classes.engie.alt = function(self,dt,player)
+  for y,xdat in pairs(map.data) do
+    for x,v in pairs(xdat) do
+      if v.level > 0 then
+        local rx = (x-1)*32+16
+        local ry = (y-1)*32+16
+        if math.dist(rx,ry,player.x,player.y) < player.classes.alt_circle then
+          v.hp = v.hp + 25
+          if v.hp > build[v.level].hp then
+            v.hp = build[v.level].hp
+          end
+        end
+      end
+    end
+  end
+end
+
 return classes
