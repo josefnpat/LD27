@@ -110,9 +110,10 @@ function players.update(dt)
     else
       v.walkdt = v.walkdt + dt*8
       v.r = v.controls:direction(v)
-      if v.controls:move(v) then
-        v.x = v.x+(math.cos(v.r)*dt*v.classes.speed)
-        v.y = v.y+(math.sin(v.r)*dt*v.classes.speed)
+      local move = v.controls:move(v)
+      if move then
+        v.x = v.x+(math.cos(move)*dt*v.classes.speed)
+        v.y = v.y+(math.sin(move)*dt*v.classes.speed)
         if v.x < 0 then
           v.x = 0
         end

@@ -3,19 +3,19 @@ local xbox_base = {}
 xbox_base.name = "Xbox 360 Controller"
 
 xbox_base.direction = function(self,player)
-  local x,y = dong.ls(self.js)
+  local x,y = dong.rs(self.js)
   local dir = -math.atan2(x,y)+math.pi/2
   return dir
 end
 
 xbox_base.shoot = function(self,player)
-  if dong.isDown(self.js,"A") then
+  if dong.isDown(self.js,"RB") then
     return true
   end
 end
 
 xbox_base.alt = function(self,player)
-  if dong.isDown(self.js,"B") then
+  if dong.isDown(self.js,"LB") then
     return true
   end
 end
@@ -24,7 +24,7 @@ xbox_base.move = function(self,player)
   local x,y = dong.ls(self.js)
   local d = math.dist(x,y,0,0)
   if d > 0.95 then
-    return true
+    return -math.atan2(x,y)+math.pi/2
   end
 end
 
@@ -41,11 +41,11 @@ end
 
 xbox_base.build_wait = false
 xbox_base.build = function(self,player)
-  if not self.build_wait and dong.isDown(self.js,"A") then
+  if not self.build_wait and dong.isDown(self.js,"RB") then
     self.build_wait = true
     return true
   end
-  if not dong.isDown(self.js,"A") then
+  if not dong.isDown(self.js,"RB") then
     self.build_wait = false
   end
 end

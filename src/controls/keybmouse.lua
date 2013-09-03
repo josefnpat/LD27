@@ -28,8 +28,21 @@ keybmouse.alt = function(self,player)
 end
 
 keybmouse.move = function(self,player)
+  local x,y = 0,0
   if love.keyboard.isDown("w") then
-    return true
+    y = y - 1
+  end
+  if love.keyboard.isDown("s") then
+    y = y + 1
+  end
+  if love.keyboard.isDown("a") then
+    x = x - 1
+  end
+  if love.keyboard.isDown("d") then
+    x = x + 1
+  end
+  if x ~= 0 or y ~= 0 then
+    return -math.atan2(x,y)+math.pi/2
   end
 end
 
