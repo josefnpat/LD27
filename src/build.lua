@@ -46,13 +46,14 @@ build[2].update = function(self,dt,mx,my,tile)
     end
   end
 end
+
 -- MONEY
 build[3] = {}
 build[3].tile = 4
 build[3].hp = 20
 build[3].slow = 0.5
 build[3].cost = 300
-build[3].money = 2
+build[3].money = 3
 build[3].dmg = build[2].dmg
 build[3].shoot_t = 0.25
 build[3].range = 384
