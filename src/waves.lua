@@ -68,16 +68,25 @@ function waves.addenemies(enemyclass,count)
       local b = {}
       b.classes = enemyclass
       b.hp = enemyclass.hp * (10+waves.level)/10
-      if math.random(0,1) == 1 then
-        b.y = math.random(64,512)+love.graphics.getHeight()
-      else
-        b.y = -math.random(64,512)
+
+      local quadrant = math.random(1,4)
+
+      if quadrant == 1 or quadrant == 3 then
+        b.x = math.random(-512,love.graphics.getWidth()+512)
+      elseif quadrant == 2 then
+        b.x = math.random(love.graphics.getWidth()+64,love.graphics.getWidth()+512)
+      else -- quadrant == 4
+        b.x = math.random(-512,-64)
       end
-      if math.random(0,1) == 1 then
-        b.x = math.random(64,512)+love.graphics.getWidth()
-      else
-        b.x = -math.random(64,512)
+
+      if quadrant == 2 or quadrant == 4 then
+        b.y = math.random(-512,love.graphics.getHeight()+512)
+      elseif quadrant == 1 then
+        b.y = math.random(-512,-64)
+      else --quadrant == 3
+        b.y = math.random(love.graphics.getHeight()+64,love.graphics.getHeight()+512)
       end
+
       b.r = 0
       b.walkdt = math.random(1,100)/100
       table.insert(waves.data,b)
